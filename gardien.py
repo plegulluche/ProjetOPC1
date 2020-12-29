@@ -1,10 +1,11 @@
 class Gardien:
     """classe gardien """
+    name = "Gardien"
 
-    def __init__(self):
+    def __init__(self, latitude=14, longitude=14):
         """constructeur de la classe , prend en parametres un latitude et longitude sous forme d'integer"""
-        self.latitude = 14
-        self.longitude = 14
+        self.latitude = latitude
+        self.longitude = longitude
 
     def __repr__(self):
         """affiche notre Gardien dans la console"""
