@@ -1,3 +1,5 @@
+import pygame
+
 class Items:
     """objets posés dans le labyrinthe"""
 
@@ -6,7 +8,7 @@ class Items:
         self.latitude = latitude
         self.longitude = longitude
         self.name = name
-        self.image = image
+        self.image = pygame.transform.scale(pygame.image.load(image).convert_alpha(),(30,30))
     
     def __str__(self):
         """affiche les objects avec print"""

@@ -1,9 +1,13 @@
+import pygame
+import os
+
 class Gardien:
     """classe gardien """
     name = "Gardien"
 
     def __init__(self, latitude=0, longitude=0):
         """constructeur de la classe , prend en parametres un latitude et longitude sous forme d'integer"""
+        self.image = pygame.image.load("ressource/Gardien.png").convert_alpha()
         self.latitude = latitude
         self.longitude = longitude
 

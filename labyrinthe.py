@@ -3,6 +3,9 @@ from gardien import Gardien
 from items import Items
 from constantes import *
 from random import randint
+import os
+import pygame
+from pygame.locals import *
 
 class Labyrinthe:
     """ Class Labyrinthe"""
@@ -17,8 +20,7 @@ class Labyrinthe:
         self.itemlist = itemlaby
      
     def read_lab_file(self):
-        """fonction prennant en paremetre le fichier texte contenant le labyrinthe.
-        Le lit et enregistre les coordonnées des murs, mac et du gardien dans des tuples"""
+        """method to read a file text containing blueprint of the maze and saving elements in variables"""
         with open(self.fichier, "r") as labyr:     
             lines = labyr.readlines() 
             self.largeur = len(lines[0])-1
@@ -37,39 +39,45 @@ class Labyrinthe:
                 line_number += 1           
             self.hauteur = idx + 1
 
-    def reprlab(self):
-        """Display labyrinth in the console"""    
+    def reprlab(self, WIN):
+        """method displaying level with list of the walls and mac and gardian objects"""
+        #loading images
+        mur = pygame.image.load(os.path.join("ressource", "mur_laby.png")).convert()
+        #going through each line    
         for colone in range(self.hauteur):
+            #going through each sprite in the line
             for ligne in range(self.largeur):
+                #calculating real position in pixel
+                x = ligne * sprite_size
+                y = colone * sprite_size
                 if (ligne, colone) in self.walls:
-                    print("m", end="")
-                elif (ligne, colone) in [(items.latitude, items.longitude) for items in self.item]: 
-                    print("#", end="")
+                    WIN.blit(mur, (x,y))
                 elif ligne == self.mac.latitude and colone == self.mac.longitude:
-                    print("M", end="")
+                    WIN.blit(self.mac.image, (x,y))
                 elif ligne == self.gardien.latitude and colone == self.gardien.longitude:
-                    print("G", end="")
+                    WIN.blit(self.gardien.image, (x,y))
                 else:
-                    print("_", end="")
-            print()
+                    for items in self.item:                  
+                        if (ligne, colone) == (items.latitude, items.longitude):
+                            WIN.blit(items.image, (x,y))
+
 
     
-    def movemac(self):
-        """moving method for mac, print the lab when mac have moved with new mac position"""
-        self.user_move = input("aller en haut (U), en bas (D), a gauche (L), a droite (R) : ")
-        if self.user_move.lower() == "u":
+    def movemac(self, direction):
+        """method to move mac around the labyrinth, checks for walls,frame borders and picks items"""
+        if direction == "up":
             self.mac.longitude -= 1
             if (self.mac.latitude, self.mac.longitude) in self.walls:
                 self.mac.longitude += 1
-        elif self.user_move.lower() == "d":
+        elif direction == "down":
             self.mac.longitude += 1
             if (self.mac.latitude, self.mac.longitude) in self.walls:
                 self.mac.longitude -=1 
-        elif self.user_move.lower() == "l":
+        elif direction == "left":
             self.mac.latitude -= 1
             if (self.mac.latitude, self.mac.longitude) in self.walls:
                 self.mac.latitude += 1
-        elif self.user_move.lower() == "r":
+        elif direction == "right":
             self.mac.latitude += 1
             if (self.mac.latitude, self.mac.longitude) in self.walls:
                 self.mac.latitude -= 1
@@ -90,11 +98,11 @@ class Labyrinthe:
                 self.mac.objects.append(item)                
                 self.item.remove(item)
                 
-       
-        self.reprlab()
+
+
 
     def additemstolab(self):
-        """ajouter les objets aléatoirement dans le labyrinthe"""
+        """method to add in a random fashion the items in the labyrinth"""
         for elements in itemlaby:
             condition = True
             while condition:
