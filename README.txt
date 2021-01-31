@@ -1,23 +1,26 @@
-#laby
-short description 
-#installation 
-put packages and how to install em 
-aka consol commands in win or linux etc 
-#usage
+#Mac Gyver and the Labyrinth
+
+2D labyrinth game.
+You have to guide MacGyver through a labyrinth.
+
+Pick the 3 items so Mac can craft a sleeping dart for the gardian and get out the maze.
+use the directionnals arrows of the keyboard to evolve in the maze.
+You just have to pass on an item to pick it.
+Mac will autocraft the final item when you have picked up all 3 items.
+miss an item and you loose against the gardian.
+
+##installation
+
+The game use Pygame as dependency.
+to install pygame: 
+
+[pygame](https://www.pygame.org/wiki/GettingStarted)
+
+to run the game launch the main.py file.
+
 
 #contributing
 
-markdown codes : 
+The Master : Aurélien MASSE
 
-# gras gros 
-## gras sous titre
-'''xxxx''' = balises codes
-[titre](lien)= entre crochets le titre du lien qui donneras le lien hypertexte et entre parentheses le lien vers la page
-
-
-dossier entities avec les classes 
-git ignore 
-refaire main.py
-requirements
-
-refaire la classe mac avec la methode movemac dans classe mac 
+His young padawan : Pierre Le Gulluche
