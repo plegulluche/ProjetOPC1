@@ -1,4 +1,4 @@
-#Mac Gyver and the Labyrinth
+#Mac Gyver and the Labyrinth #
 
 2D labyrinth game.
 You have to guide MacGyver through a labyrinth.
@@ -9,7 +9,7 @@ You just have to pass on an item to pick it.
 Mac will autocraft the final item when you have picked up all 3 items.
 miss an item and you loose against the gardian.
 
-##installation
+##installation##
 
 The game use Pygame as dependency.
 to install pygame: 
@@ -19,7 +19,7 @@ to install pygame:
 to run the game launch the main.py file.
 
 
-##contributing
+##contributing##
 
 The Master : Aurélien MASSE
 
