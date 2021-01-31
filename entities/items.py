@@ -1,19 +1,19 @@
 import pygame
 
 class Items:
-    """objets posés dans le labyrinthe"""
+    """items for our labyrinth"""
 
     def __init__(self, latitude, longitude, name, image):
-        """constructeur de la classe Objects"""
+        """Items class constructor"""
         self.latitude = latitude
         self.longitude = longitude
         self.name = name
         self.image = pygame.transform.scale(pygame.image.load(image).convert_alpha(),(30,30))
     
     def __str__(self):
-        """affiche les objects avec print"""
+        """display Items object for print method"""
         return self.name
 
     def __repr__(self):
-        """affiche les objects dans la console"""
+        """display items in console"""
         return self.name

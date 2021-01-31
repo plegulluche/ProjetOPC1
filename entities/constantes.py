@@ -1,5 +1,5 @@
 #file containing blueprint of the labyrinth
-fichier = "laby.txt"
+fichier = "entities/laby.txt"
 
 #list of dictionnaries containing labyrinth items attributes
 itemlaby = [{"name": "seringue" , "image": ("ressource/seringue.png") },{"name": "ether", "image": ("ressource/ether.png") },{"name": "tuyau","image": ("ressource/tube_plastique.png") }]

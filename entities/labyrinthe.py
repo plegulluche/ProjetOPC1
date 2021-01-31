@@ -1,7 +1,7 @@
-from mac import Mac
-from gardien import Gardien
-from items import Items
-from constantes import *
+from entities.mac import Mac
+from entities.gardien import Gardien
+from entities.items import Items
+from entities.constantes import *
 from random import randint
 import os
 import pygame
@@ -60,46 +60,6 @@ class Labyrinthe:
                     for items in self.item:                  
                         if (ligne, colone) == (items.latitude, items.longitude):
                             WIN.blit(items.image, (x,y))
-
-
-    
-    def movemac(self, direction):
-        """method to move mac around the labyrinth, checks for walls,frame borders and picks items"""
-        if direction == "up":
-            self.mac.longitude -= 1
-            if (self.mac.latitude, self.mac.longitude) in self.walls:
-                self.mac.longitude += 1
-        elif direction == "down":
-            self.mac.longitude += 1
-            if (self.mac.latitude, self.mac.longitude) in self.walls:
-                self.mac.longitude -=1 
-        elif direction == "left":
-            self.mac.latitude -= 1
-            if (self.mac.latitude, self.mac.longitude) in self.walls:
-                self.mac.latitude += 1
-        elif direction == "right":
-            self.mac.latitude += 1
-            if (self.mac.latitude, self.mac.longitude) in self.walls:
-                self.mac.latitude -= 1
-        else:
-            print("invalid input")
-            
-        if self.mac.latitude < 0:
-            self.mac.latitude += 1
-        elif self.mac.longitude < 0:
-            self.mac.longitude += 1
-        elif self.mac.latitude > 14:
-            self.mac.latitude -= 1
-        elif self.mac.longitude > 14:
-            self.mac.longitude -= 1
-        
-        for item in self.item:
-            if (item.latitude, item.longitude) == (self.mac.latitude, self.mac.longitude):
-                self.mac.objects.append(item)                
-                self.item.remove(item)
-                
-
-
 
     def additemstolab(self):
         """method to add in a random fashion the items in the labyrinth"""
