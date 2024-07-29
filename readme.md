@@ -1,4 +1,5 @@
-#Mac Gyver and the Labyrinth #
+# # Mac Gyver and the Labyrinth #
+# updated:09/07/2024
 
 2D labyrinth game.
 You have to guide MacGyver through a labyrinth.
